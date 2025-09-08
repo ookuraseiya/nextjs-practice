@@ -1,0 +1,25 @@
+services:
+  nextjs:
+    container_name: nextjs
+    build:
+      context: ./nextjs
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ./nextjs:/nextjs
+    environment:
+      - WATCHPACK_POLLING=true
+    ports:
+      - '3000:3000'
+    command: sh -c "npm install && npm run dev"
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - nextjs
