@@ -22,12 +22,12 @@ const jsonData = {
       greetingStatement:
         '初めまして大倉聖也と言います。大阪にある情報系の大学を2024年2月に卒業後は東京にある受託開発をメインに行っているIT企業に勤めています。現在はスマホアプリと社内ツールの開発に携わっています。個人ではNext.jsとTypeScriptをよく触っています。',
       career: `主な経歴：
-・2021/02 ~ 2023/06：
-Web系のスタートアップ企業でインターン（アルバイト）入社。主にWeb制作・開発や社内システム開発に携わった。
-・2022/06 ~ 2024/03：
-中小IT企業でインターン（アルバイト）入社。主にWeb制作・開発や社内システム開発に携わった。
-・2024/04 ~ 2025/09（今現在）：
-東京にあるIT企業で新卒入社。主にスマホアプリ・社内ツール開発に携わっている。`,
+              ・2021/02 ~ 2023/06：
+                Web系のスタートアップ企業でインターン（アルバイト）入社。主にWeb制作・開発や社内システム開発に携わった。
+              ・2022/06 ~ 2024/03：
+                中小IT企業でインターン（アルバイト）入社。主にWeb制作・開発や社内システム開発に携わった。
+              ・2024/04 ~ 2025/09（今現在）：
+                東京にあるIT企業で新卒入社。主にスマホアプリ・社内ツール開発に携わっている。`,
     },
   ],
 };
@@ -38,24 +38,22 @@ export default function AboutPage() {
     greetingStatement: jsonData.contents[0].greetingStatement,
     career: jsonData.contents[0].career,
   };
-
   return (
-    <section className='max-w-5xl mx-auto px-6 py-16'>
-      <h2 className='text-3xl font-bold text-center mb-12'>About</h2>
+    <section className='container mx-auto py-6'>
+      <h2 className='text-4xl md:text-5xl font-bold text-center mb-6 md:mb-11'>
+        About
+      </h2>
       <div className='flex flex-col md:flex-row items-center gap-10'>
-        {/* プロフィール画像 */}
         <div className='flex-shrink-0'>
           <Image
             src={profile.profileImage.url}
             alt='プロフィール画像'
             width={400}
             height={400}
-            className='rounded-full w-60 h-60 object-cover'
+            className='rounded-full w-40 lg:w-60 h-40 lg:h-60 object-cover'
           />
         </div>
-
-        {/* 自己紹介 & 経歴 */}
-        <div className='text-lg leading-relaxed whitespace-pre-line'>
+        <div className='text-sm lg:text-xl leading-relaxed whitespace-pre-line'>
           <p className='mb-6'>{profile.greetingStatement}</p>
           <p>{profile.career}</p>
         </div>

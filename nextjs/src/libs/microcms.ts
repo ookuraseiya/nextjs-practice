@@ -40,6 +40,16 @@ export type Skill = {
   qualification: string;
 };
 
+export type Profile = {
+  profileImage: {
+    url: string;
+    width: number;
+    height: number;
+  };
+  greetingStatement: string;
+  career: string;
+};
+
 export type Article = Blog & MicroCMSContentId & MicroCMSDate;
 
 if (!process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_SERVICE_DOMAIN) {
@@ -73,6 +83,16 @@ export const getSkill = async (queries?: MicroCMSQueries) => {
   const skillData = await client
     .getList<Skill>({
       endpoint: 'skills',
+      queries,
+    })
+    .catch(notFound);
+  return skillData;
+};
+
+export const getProfile = async (queries?: MicroCMSQueries) => {
+  const skillData = await client
+    .getList<Profile>({
+      endpoint: 'profile',
       queries,
     })
     .catch(notFound);

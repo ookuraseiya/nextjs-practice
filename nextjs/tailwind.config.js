@@ -1,11 +1,14 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
-    extend: {
-      // fontFamily: {
-      //   zen: ['"Zen Maru Gothic"', 'sans-serif'],
-      // },
+    fontFamily: {
+      zen: ['"Zen Maru Gothic"', 'sans-serif'],
     },
+    // container: {
+    //   center: true, // コンテナを中央寄せ
+    //   padding: '10%', // 左右に10%ずつのパディング
+    // },
   },
   plugins: [],
 };
