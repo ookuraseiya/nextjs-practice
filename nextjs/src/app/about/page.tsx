@@ -1,18 +1,18 @@
 import React from 'react';
 import { getProfile, getSkill } from '@/libs/microcms';
-import ProfileContent from '@/components/Profile/Profile';
-import SkillContent from '@/components/Skill/Skill';
+import ProfileContent from '@/components/Profile';
+import SkillContent from '@/components/Skill';
 
 export default async function Skill() {
-  const skillsData = await getSkill();
-  const [data] = skillsData.contents;
+  const skillData = await getSkill();
+  const [skill] = skillData.contents;
   const profileData = await getProfile();
   const [profile] = profileData.contents;
 
   return (
     <>
       <ProfileContent profile={profile} />
-      <SkillContent skills={data} />
+      <SkillContent skill={skill} />
     </>
   );
 }

@@ -73,16 +73,15 @@ if (!process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_SKILLS_SERVICE_DOMAIN) {
 }
 
 // Initialize Client SDK.
-export const client = createClient({
+const client = createClient({
   serviceDomain: process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_SERVICE_DOMAIN,
   apiKey: process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_API_KEY,
 });
 
-// ブログ一覧を取得
 export const getSkill = async (queries?: MicroCMSQueries) => {
   const skillData = await client
     .getList<Skill>({
-      endpoint: 'skills',
+      endpoint: 'skill',
       queries,
     })
     .catch(notFound);
@@ -90,13 +89,13 @@ export const getSkill = async (queries?: MicroCMSQueries) => {
 };
 
 export const getProfile = async (queries?: MicroCMSQueries) => {
-  const skillData = await client
+  const profileData = await client
     .getList<Profile>({
       endpoint: 'profile',
       queries,
     })
     .catch(notFound);
-  return skillData;
+  return profileData;
 };
 
 // ブログの詳細を取得
