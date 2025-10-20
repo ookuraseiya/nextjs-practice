@@ -9,29 +9,30 @@ const Header = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className='sticky top-0 z-50 bg-mainBackgroundColor'>
-      <div className='flex items-center justify-between py-4'>
-        <h1 className='text-3xl font-bold text-yellow-500'>TECH BLOG</h1>
-        <nav className='hidden md:block'>
-          <ul className='flex space-x-10 font-semibold text-xl'>
-            <li>
-              <Link href='/'>Home</Link>
-            </li>
-            <li>
-              <Link href='/articles'>Articles</Link>
-            </li>
-            <li>
-              <Link href='/about'>About</Link>
-            </li>
-            <li>
-              <Link href='/contact'>Contact</Link>
-            </li>
-          </ul>
-        </nav>
-        <button className='md:hidden' onClick={toggleMenu}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+    <header className='h-[8vh] sticky top-0 z-50 bg-mainBackgroundColor flex justify-between items-center'>
+      <h1 className='text-2xl md:text-3xl font-bold text-yellow-500'>
+        TECH BLOG
+      </h1>
+      <nav className='hidden md:block'>
+        <ul className='flex space-x-10 font-semibold text-xl'>
+          <li>
+            <Link href='/'>Home</Link>
+          </li>
+          <li>
+            <Link href='/articles'>Articles</Link>
+          </li>
+          <li>
+            <Link href='/about'>About</Link>
+          </li>
+          <li>
+            <Link href='/contact'>Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <button className='md:hidden' onClick={toggleMenu}>
+        {isOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
 
       <AnimatePresence>
         {isOpen && (
@@ -44,36 +45,28 @@ const Header = () => {
           >
             <div className='flex items-center justify-between p-4 border-b border-gray-200'>
               <h2 className='text-2xl font-bold'>TECH BLOG</h2>
-              <button className='py-2 block' onClick={toggleMenu}>
+              <button onClick={toggleMenu}>
                 <X size={28} />
               </button>
             </div>
             <ul className='flex flex-col space-y-6 p-6 text-lg font-semibold'>
               <li>
-                <Link href='/' className='py-2 block' onClick={toggleMenu}>
+                <Link href='/' className='block' onClick={toggleMenu}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  href='/articles'
-                  className='py-2 block'
-                  onClick={toggleMenu}
-                >
+                <Link href='/articles' className='block' onClick={toggleMenu}>
                   Articles
                 </Link>
               </li>
               <li>
-                <Link href='/about' className='py-2 block' onClick={toggleMenu}>
+                <Link href='/about' className='block' onClick={toggleMenu}>
                   About
                 </Link>
               </li>
               <li>
-                <Link
-                  href='/contact'
-                  className='py-2 block'
-                  onClick={toggleMenu}
-                >
+                <Link href='/contact' className='block' onClick={toggleMenu}>
                   Contact
                 </Link>
               </li>

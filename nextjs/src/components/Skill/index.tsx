@@ -23,7 +23,7 @@ export default async function SkillsContent({ skill }: Props) {
   ];
 
   return (
-    <div className='container mx-auto py-6 text-center'>
+    <div className='mx-auto text-center py-3 md:py-6'>
       <h1 className='text-4xl md:text-5xl font-bold mb-2 md:mb-4'>Skill</h1>
       <p className='text-sm lg:text-xl font-bold mb-6 md:mb-11 text-subFontColor'>
         実際に業務で使用した年数を記述しています

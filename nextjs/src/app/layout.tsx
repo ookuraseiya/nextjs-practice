@@ -1,6 +1,6 @@
+import './globals.css';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -32,21 +32,6 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
-        {/* <br/>
-      <br/>
-      <div className='w-5xl border border-red-500 mx-auto'>width test</div>
-      <br/>
-      <div className="max-w-5xl border border-red-500 mx-auto">max width test</div>
-      <br/>
-      <div className="mx-100 border border-red-500 mx-auto">margin test</div>
-      <br/>
-      <div className='w-[40%] border border-red-500 mx-auto'>40% width test</div>
-      <br/>
-      <div className='w-[60%] border border-red-500 mx-auto'>60% width test</div>
-      <br/>
-      <div className='w-[80%] border border-red-500 mx-auto'>80% width test</div>
-      <br/>
-      <br/> */}
       </body>
     </html>
   );
