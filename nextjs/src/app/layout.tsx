@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} font-zen bg-mainBackgroundColor text-mainFontColor max-w-xs sm:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto`}
       >
         <Header />
-        <main>{children}</main>
+        <>{children}</>
         <Footer />
       </body>
     </html>

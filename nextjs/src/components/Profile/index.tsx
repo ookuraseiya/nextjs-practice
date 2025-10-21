@@ -7,10 +7,10 @@ type Props = {
 
 export default function ProfileContent({ profile }: Props) {
   return (
-    <section className='mx-auto py-3 md:py-6'>
-      <h2 className='text-4xl md:text-5xl font-bold text-center mb-6 md:mb-11'>
+    <section className='py-3 md:py-6'>
+      <h1 className='text-4xl md:text-5xl font-bold text-center mb-6 md:mb-11'>
         About
-      </h2>
+      </h1>
       <div className='flex flex-col md:flex-row items-center gap-10'>
         <div className='flex-shrink-0'>
           <Image

@@ -1,10 +1,12 @@
-import { formatInTimeZone } from 'date-fns-tz';
+import { format } from 'date-fns';
+import { ja } from 'date-fns/locale';
 import { load } from 'cheerio';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/hybrid.css';
 
 export const formatDate = (date: string) => {
-  return formatInTimeZone(new Date(date), 'Asia/Tokyo', 'd MMMM, yyyy');
+  const jstDate = new Date(date);
+  return format(jstDate, 'yyyy/MM/dd', { locale: ja });
 };
 
 export const formatRichText = (richText: string) => {
