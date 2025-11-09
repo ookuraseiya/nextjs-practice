@@ -19,7 +19,7 @@ export default function Pagination({
   );
 
   return (
-    <ul className='flex justify-center items-center gap-2 py-6 mt-6'>
+    <ul className='flex justify-center items-center gap-2 mt-10'>
       {pages.map((p) => (
         <li key={p}>
           {current !== p ? (

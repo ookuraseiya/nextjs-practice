@@ -10,9 +10,7 @@ const Header = () => {
 
   return (
     <header className='h-[8vh] sticky top-0 z-50 bg-mainBackgroundColor flex justify-between items-center'>
-      <h1 className='text-2xl md:text-3xl font-bold text-yellow-500'>
-        TECH BLOG
-      </h1>
+      <h1 className='text-2xl md:text-3xl font-bold'>TECH BLOG</h1>
       <nav className='hidden md:block'>
         <ul className='flex space-x-10 font-semibold text-xl'>
           <li>

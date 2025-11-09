@@ -23,9 +23,11 @@ export default function Page() {
   };
 
   return (
-    <main className='min-h-[82vh] flex flex-col justify-center items-center bg-mainBackgroundColor text-mainFontColor py-3 md:py-6'>
+    <main className='min-h-[82vh] flex flex-col justify-center items-center py-3 md:py-6'>
       <div className='max-w-lg w-full'>
-        <h1 className='text-4xl md:text-5xl font-bold mb-2 md:mb-4'>Contact</h1>
+        <h1 className='text-center text-4xl md:text-5xl font-bold mb-2 md:mb-4'>
+          Contact
+        </h1>
         <p className='text-sm lg:text-xl leading-relaxed whitespace-pre-line mb-4 md:mb-8'>
           各種お問い合わせはこちらのフォームよりお願いいたします。
           <br />

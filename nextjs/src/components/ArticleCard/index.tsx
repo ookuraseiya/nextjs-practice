@@ -25,12 +25,7 @@ export default function ArticleCard({
       className='border-b pb-4 block hover:opacity-90 transition'
     >
       <div className='overflow-hidden rounded-md border border-gray-300 relative aspect-[3/2]'>
-        <Image
-          src={eyecatch.url}
-          alt={title}
-          fill
-          // className='object-cover'
-        />
+        <Image src={eyecatch.url} alt={title} fill />
       </div>
       <p className='text-sm my-2'>{formatDate(createdAt)}</p>
       <div className='flex flex-wrap gap-2 mb-2'>

@@ -22,9 +22,9 @@ export default function ArticleList({ articles }: Props) {
         ))}
       </div>
 
-      <div className='flex justify-center mt-8'>
-        <Pagination totalCount={50} current={1} basePath='/articles' />
-      </div>
+      {/* <div className='flex justify-center mt-8'> */}
+      <Pagination totalCount={50} current={1} basePath='/articles' />
+      {/* </div> */}
     </section>
   );
 }

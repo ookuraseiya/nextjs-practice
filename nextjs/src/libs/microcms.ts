@@ -44,35 +44,48 @@ export type Profile = {
   career: string;
 };
 
-if (!process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_SERVICE_DOMAIN) {
+const PORTFOLIO_SERVICE_DOMAIN =
+  process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_SERVICE_DOMAIN;
+const PORTFOLIO_API_KEY = process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_API_KEY;
+const PORTFOLIO_PROFILE_SERVICE_DOMAIN =
+  process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_PROFILE_SERVICE_DOMAIN;
+const PORTFOLIO_SKILLS_SERVICE_DOMAIN =
+  process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_SKILLS_SERVICE_DOMAIN;
+const TECH_BLOG_SERVICE_DOMAIN =
+  process.env.NEXT_PUBLIC_MICROCMS_TECH_BLOG_SERVICE_DOMAIN;
+const TECH_BLOG_API_KEY = process.env.NEXT_PUBLIC_MICROCMS_TECH_BLOG_API_KEY;
+const TECH_BLOG_ARTICLES_SERVICE_DOMAIN =
+  process.env.NEXT_PUBLIC_MICROCMS_TECH_BLOG_ARTICLES_SERVICE_DOMAIN;
+
+if (!PORTFOLIO_SERVICE_DOMAIN) {
   throw new Error('NEXT_PUBLIC_MICROCMS_PORTFOLIO_SERVICE_DOMAIN is required');
 }
 
-if (!process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_API_KEY) {
+if (!PORTFOLIO_API_KEY) {
   throw new Error('NEXT_PUBLIC_MICROCMS_PORTFOLIO_API_KEY is required');
 }
 
-if (!process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_PROFILE_SERVICE_DOMAIN) {
+if (!PORTFOLIO_PROFILE_SERVICE_DOMAIN) {
   throw new Error(
     'NEXT_PUBLIC_MICROCMS_PORTFOLIO_PROFILE_SERVICE_DOMAIN is required'
   );
 }
 
-if (!process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_SKILLS_SERVICE_DOMAIN) {
+if (!PORTFOLIO_SKILLS_SERVICE_DOMAIN) {
   throw new Error(
     'NEXT_PUBLIC_MICROCMS_PORTFOLIO_SKILLS_SERVICE_DOMAIN is required'
   );
 }
 
-if (!process.env.NEXT_PUBLIC_MICROCMS_TECH_BLOG_SERVICE_DOMAIN) {
+if (!TECH_BLOG_SERVICE_DOMAIN) {
   throw new Error('NEXT_PUBLIC_MICROCMS_TECH_BLOG_SERVICE_DOMAIN is required');
 }
 
-if (!process.env.NEXT_PUBLIC_MICROCMS_TECH_BLOG_API_KEY) {
+if (!TECH_BLOG_API_KEY) {
   throw new Error('NEXT_PUBLIC_MICROCMS_TECH_BLOG_API_KEY is required');
 }
 
-if (!process.env.NEXT_PUBLIC_MICROCMS_TECH_BLOG_BLOGS_SERVICE_DOMAIN) {
+if (!TECH_BLOG_ARTICLES_SERVICE_DOMAIN) {
   throw new Error(
     'NEXT_PUBLIC_MICROCMS_TECH_BLOG_BLOGS_SERVICE_DOMAIN is required'
   );
@@ -80,13 +93,14 @@ if (!process.env.NEXT_PUBLIC_MICROCMS_TECH_BLOG_BLOGS_SERVICE_DOMAIN) {
 
 // Initialize Client SDK.
 const portfolioClient = createClient({
-  serviceDomain: process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_SERVICE_DOMAIN,
-  apiKey: process.env.NEXT_PUBLIC_MICROCMS_PORTFOLIO_API_KEY,
+  serviceDomain: PORTFOLIO_SERVICE_DOMAIN,
+  apiKey: PORTFOLIO_API_KEY,
 });
 
+// Initialize Client SDK.
 const techBlogClient = createClient({
-  serviceDomain: process.env.NEXT_PUBLIC_MICROCMS_TECH_BLOG_SERVICE_DOMAIN,
-  apiKey: process.env.NEXT_PUBLIC_MICROCMS_TECH_BLOG_API_KEY,
+  serviceDomain: TECH_BLOG_SERVICE_DOMAIN,
+  apiKey: TECH_BLOG_API_KEY,
 });
 
 export const getSkill = async (queries?: MicroCMSQueries) => {
@@ -112,7 +126,21 @@ export const getProfile = async (queries?: MicroCMSQueries) => {
 export const getArticles = async (queries?: MicroCMSQueries) => {
   const data = await techBlogClient
     .getList<Article>({
-      endpoint: 'blogs',
+      endpoint: 'articles',
+      queries,
+    })
+    .catch(notFound);
+  return data;
+};
+
+export const getArticleDetail = async (
+  articleId: string,
+  queries?: MicroCMSQueries
+) => {
+  const data = await techBlogClient
+    .getListDetail<Article>({
+      endpoint: 'articles',
+      contentId: articleId,
       queries,
     })
     .catch(notFound);
@@ -133,7 +161,7 @@ export const getArticles = async (queries?: MicroCMSQueries) => {
 
 // // タグの詳細を取得
 // export const getTag = async (contentId: string, queries?: MicroCMSQueries) => {
-//   const detailData = await client
+//   const data = await client
 //     .getListDetail<Tag>({
 //       endpoint: 'tags',
 //       contentId,
@@ -141,5 +169,5 @@ export const getArticles = async (queries?: MicroCMSQueries) => {
 //     })
 //     .catch(notFound);
 
-//   return detailData;
+//   return data;
 // };
